@@ -5,8 +5,8 @@ pipeline {
         stage ("Build") {
             steps {
                 sh "which java"
-                sh "java --version"
-                sh "javac --version"
+                sh "java -version"
+                sh "javac -version"
                 sh "mvn -version"
                 sh "mvn clean install"
             }
