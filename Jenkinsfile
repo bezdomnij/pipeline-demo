@@ -13,7 +13,7 @@ pipeline {
                 sh "which javac"
                 sh "java -version"
                 sh "javac -version"
-                mvn -version
+                sh "mvn -version"
                 sh "mvn clean install"
             }
         }
