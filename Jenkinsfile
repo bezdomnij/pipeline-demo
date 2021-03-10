@@ -1,18 +1,21 @@
+
+#!groovy
+
 pipeline {
+    environment {
+        JAVA_TOOL_OPTIONS = "-Duser.home=/var/maven"
+    }
     agent {
         docker {
-            image "maven:3.6.3-jdk-11"
+            image "maven:3.6.0-jdk-13"
             label "docker"
+            args "-v /tmp/maven:/var/maven/.m2 -e MAVEN_CONFIG=/var/maven/.m2"
         }
     }
-   
+
     stages {
-        stage ("Build") {
+        stage("Build") {
             steps {
-                sh "which java"
-                sh "which javac"
-                sh "java -version"
-                sh "javac -version"
                 sh "mvn -version"
                 sh "mvn clean install"
             }
